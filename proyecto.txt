@@ -1,0 +1,66 @@
+string conexion = "Data Source=DESKTOP-OHI80SJ\\SQLEXPRESS;Initial Catalog=reportUsuari;Integrated Security=True";
+private void btninsertar(object sender, EventArgs e)
+{
+    using (SqlConnection cn = new SqlConnection(conexion)) 
+    {
+        SqlCommand cmd = new SqlCommand("insert into usuari(id,usuario,contrasena) values  (" + txtid.Text + ",'" + txnombre.Text + "','" + txtcontrasena.Text + " ')",cn);
+        cmd.CommandType= CommandType.Text;
+
+        cn.Open();
+        cmd.ExecuteNonQuery();
+
+
+
+private void btnmodificar(object sender, EventArgs e)
+{
+
+    using (SqlConnection cn = new SqlConnection(conexion))
+    {
+        SqlCommand cmd = new SqlCommand("update usuari set usuario = '" + txnombre.Text + "',contrasena = '" + txtcontrasena.Text + "' where id =" + txtid.Text + "", cn);
+        cmd.CommandType = CommandType.Text;
+
+        cn.Open();
+        cmd.ExecuteNonQuery();
+
+
+ private void btneliminar_Click(object sender, EventArgs e)
+ {
+     using (SqlConnection cn = new SqlConnection(conexion))
+     {
+         SqlCommand cmd = new SqlCommand("delete from usuari where id = "+ txtid.Text  , cn);
+         cmd.CommandType = CommandType.Text;
+
+         cn.Open();
+         cmd.ExecuteNonQuery();
+     }
+
+ }
+
+
+
+
+
+create database reportUsuari
+use reportUsuari
+
+create table usuari(
+id int,
+usuario varchar(50),
+contrasena varchar(50)
+)
+
+select * from usuari
+
+
+delete from usuari where id = 44
+
+insert into usuari(id,usuario,contrasena) values (2,' jafet','pang ')
+
+update usuari set usuario = 'fef',contrasena = 'ffref' where id = 2  
+
+
+
+
+
+
+    
